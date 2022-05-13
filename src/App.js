@@ -1,25 +1,90 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from './react';
+import { getUser } from './services/fetch-utils';
+import {
+  BrowserRouter as Router,
+  Switch,
+  NavLink,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+import Auth from './Auth';
+import CreatePage from './CreatePage';
+import UpdatePage from './UpdatePage';
+import ListPage from './ListPage';
 
-function App() {
+import './App.css';
+import { logout } from './services/fetch-utils';
+
+export default function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const userData = getUser();
+
+    if (userData) {
+      setUser(userData);
+    }
+  }, []);
+
+  async function handleLogout() {
+    await logout();
+
+    setUser(null);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <header>
+          {user
+            ? <nav>
+              <ul>
+                <li>
+                  <NavLink exact to="/">Home</NavLink>
+                </li>
+                <li>
+                  <NavLink exact to="/create">Add a Deck</NavLink>
+                </li>
+              </ul>
+            </nav>
+            : <AuthPage setUser={setUser} />}
+          <button onClick={handleLogout}>Logout</button>
+        </header>
+        <main>
+          {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+          <Switch>
+            <Route exact path="/">
+              {user
+                ? <Redirect to = '/tarot-decks' />
+                : <AuthPage setUser={setUser} />
+              }
+            </Route>
+
+            <Route exact path="/tarot-decks">
+              {user
+                ? <ListPage />
+                : <AuthPage setUser={setUser} />
+              }
+            </Route>
+            
+            <Route exact path="/tarot-decks/:id">
+              {user
+                ? <UpdatePage />
+                : <AuthPage setUser={setUser} />
+              }
+            </Route>
+
+            <Route exact path="/create">
+              {user
+                ? <CreatePage />
+                : <AuthPage setUser={setUser} />
+              }
+            </Route>
+
+          </Switch>
+        </main>
+      </div>
+    </Router>
   );
 }
-
-export default App;
