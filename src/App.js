@@ -1,4 +1,4 @@
-import { useState, useEffect } from './react';
+import { useState, useEffect } from 'react';
 import { getUser } from './services/fetch-utils';
 import {
   BrowserRouter as Router,
@@ -7,7 +7,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import Auth from './Auth';
+import AuthPage from './AuthPage';
 import CreatePage from './CreatePage';
 import UpdatePage from './UpdatePage';
 import ListPage from './ListPage';
