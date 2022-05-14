@@ -26,7 +26,7 @@ export async function logout() {
 
 export async function createDeck(deck) {
   const response = await client
-    .from('tarot-decks')
+    .from('tarot_decks')
     .insert([deck]);
 
   return checkError(response);
@@ -34,7 +34,7 @@ export async function createDeck(deck) {
 
 export async function getDecks() {
   const response = await client
-    .from('tarot-decks')
+    .from('tarot_decks')
     .select('*');
     
   return checkError(response);
@@ -42,7 +42,7 @@ export async function getDecks() {
 
 export async function getDeckById(id) {
   const response = await client
-    .from('tarot-decks')
+    .from('tarot_decks')
     .select('*')
     .match({ id })
     .single();
@@ -52,7 +52,7 @@ export async function getDeckById(id) {
 
 export async function updateGame(id, newDeck) {
   const response = await client
-    .from('tarot-decks')
+    .from('tarot_decks')
     .update(newDeck)
     .match({ id });
 

@@ -46,9 +46,9 @@ export default function App() {
                   <NavLink exact to="/create">Add a Deck</NavLink>
                 </li>
               </ul>
+              <button onClick={handleLogout}>Logout</button>
             </nav>
           }
-          <button onClick={handleLogout}>Logout</button>
         </header>
         <main>
           {/* A <Switch> looks through its children <Route>s and

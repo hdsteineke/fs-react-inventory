@@ -10,7 +10,6 @@ export default function AuthPage({ setUser }) {
     e.preventDefault();
 
     const userData = await signIn(email, password);
-    console.log(userData, 'user');
 
     setUser(userData);
   }
@@ -28,6 +27,7 @@ export default function AuthPage({ setUser }) {
   return (
     <div className='auth'>
       <form onSubmit={handleSignIn}>
+        <h1>Coveted Cards</h1>
         <h3>Sign In</h3>
         <label>
           Email
