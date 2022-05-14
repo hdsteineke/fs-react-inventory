@@ -37,7 +37,7 @@ export default function App() {
       <div>
         <header>
           {user
-            ? <nav>
+            && <nav>
               <ul>
                 <li>
                   <NavLink exact to="/">Home</NavLink>
@@ -47,7 +47,7 @@ export default function App() {
                 </li>
               </ul>
             </nav>
-            : <AuthPage setUser={setUser} />}
+          }
           <button onClick={handleLogout}>Logout</button>
         </header>
         <main>

@@ -10,6 +10,7 @@ export default function AuthPage({ setUser }) {
     e.preventDefault();
 
     const userData = await signIn(email, password);
+    console.log(userData, 'user');
 
     setUser(userData);
   }
@@ -30,11 +31,11 @@ export default function AuthPage({ setUser }) {
         <h3>Sign In</h3>
         <label>
           Email
-          <input required onChange={e => setEmail(e.target.value)} type="email" />
+          <input required onChange={e => setEmail(e.target.value)} name="email" type="email" />
         </label>
         <label>
           Password
-          <input required onChange={e => setPassword(e.target.value)} type="password" />
+          <input required onChange={e => setPassword(e.target.value)} name="password" type="password" />
         </label>
         <button>Sign In</button>
       </form>
@@ -43,11 +44,11 @@ export default function AuthPage({ setUser }) {
         <h3>Sign Up</h3>
         <label>
           Email
-          <input required onChange={e => setEmail(e.target.value)} type="email" />
+          <input required onChange={e => setEmail(e.target.value)} name="email" type="email" />
         </label>
         <label>
           Password
-          <input required onChange={e => setPassword(e.target.value)} type="password" />
+          <input required onChange={e => setPassword(e.target.value)} name="password" type="password" />
         </label>
         <button>Sign Up</button>
       </form>
