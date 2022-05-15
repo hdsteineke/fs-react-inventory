@@ -28,7 +28,7 @@ export default function UpdatePage() {
       deck: deck.deck,
       creators: deck.creators,
       type: deck.type,
-      num_cards: deck.cardCount
+      num_cards: deck.num_cards
     }
     );
 
@@ -62,7 +62,7 @@ export default function UpdatePage() {
 
       <label>
         Card Count:
-        <input required value={deck.num_cards} onChange={e => setDeck({ ...deck, num_cards: e.target.value })}>
+        <input value={deck.num_cards} onChange={e => setDeck({ ...deck, num_cards: e.target.value })}>
         </input>
       </label>
       <button>Update deck</button>
