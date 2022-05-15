@@ -50,7 +50,7 @@ export async function getDeckById(id) {
   return checkError(response);
 }
 
-export async function updateGame(id, newDeck) {
+export async function updateDeck(id, newDeck) {
   const response = await client
     .from('tarot_decks')
     .update(newDeck)

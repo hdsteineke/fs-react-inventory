@@ -27,27 +27,27 @@ export default function CreatePage() {
     <form onSubmit={handleSubmit}>
       <label>
         Deck:
-        <input value={deck} onChange={e => setDeck(e.target.value)}>
+        <input required value={deck} onChange={e => setDeck(e.target.value)}>
         </input>
       </label>
 
       <label>
         Creator:
-        <input value={creators} onChange={e => setCreators(e.target.value)}>
+        <input required value={creators} onChange={e => setCreators(e.target.value)}>
         </input>
       </label>
 
       <label>
         Type:
-        <select value={type} onChange={e => setType(e.target.value)}>
-          <option value='tarot'>Tarot</option>
-          <option value='oracle'>Oracle</option>
+        <select required value={type} onChange={e => setType(e.target.value)}>
+          <option value='Tarot'>Tarot</option>
+          <option value='Oracle'>Oracle</option>
         </select>
       </label>
 
       <label>
         Card Count:
-        <input value={cardCount} onChange={e => setCardCount(e.target.value)}>
+        <input required value={cardCount} onChange={e => setCardCount(e.target.value)}>
         </input>
       </label>
       <button>Add deck</button>

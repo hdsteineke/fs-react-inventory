@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Deck({ deck }) {
   return (
-    <Link to={'/tarot-decks/:id'}>
+    <Link to={`/tarot-decks/${deck.id}`}>
       <div className='deck'>
         <h3>{deck.deck}</h3>
         <img src={deck.image} />

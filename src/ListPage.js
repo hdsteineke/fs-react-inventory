@@ -3,7 +3,7 @@ import Deck from './Deck';
 import { getDecks } from './services/fetch-utils';
 
 
-export default function ListPage({ decks }) {
+export default function ListPage() {
   const [deckCollection, setDeckCollection] = useState([]);
 
   useEffect(() => {
